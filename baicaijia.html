@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta name='viewport' content='width=device-width,user-scalable=no, initial-scale=1.0 minimum-scale=1.0 maximum-scale=1.0'>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel='stylesheet' type='text/css' href='lib/swiper.min.css'>
+    <link rel='stylesheet' type='text/css' href='css/discount.css'>
+    <script type='text/javascript'>
+        //用JS动态改变html字体默认大小
+        var fontSize = window.screen.width / 20;
+        console.log(fontSize);
+        document.querySelector('html').style.fontSize = fontSize + 'px';
+        window.onresize = function () {
+            var fontSize = window.screen.width / 20;
+            console.log(fontSize);
+            document.querySelector('html').style.fontSize = fontSize + 'px';
+        }
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="root-swiper-container">
+        <nav>
+            <a href="index.html" class="left">&lt;</a>
+            <h3>白菜价-淘宝内部券</h3>
+            <a href="#" class="right">
+                <img src="images/header_app.png" alt="">
+            </a>
+        </nav>
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <!--第一个slide里面的container-->
+                <div class="sec1-swiper-container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <ul id="page-1"></ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination" id="root-swiper-pagination">
+        </div>
+    </div>
+    <div class="foot-top">
+        <a href="javascript:void(0)">登陆</a>
+        <a href="javascript:void(0)">注册</a>
+        <a href="javascript:void(0)" id='to-Top'>
+            <img src="images/top.jpg" alt="">返回顶部
+        </a>
+    </div>
+
+</body>
+
+</html>
+<script type='text/javascript' src="lib/zepto.js"></script>
+<script type='text/javascript' src="lib/event.js"></script>
+<script type='text/javascript' src="lib/ajax.js"></script>
+<script type='text/javascript' src="lib/swiper.min.js"></script>
+<script type='text/javascript' src="lib/template.js"></script>
+<script type='text/javascript' src="js/discount.js"></script>
+<script type='text/template' id="slideNum-template">
+    
+</script>
+<!--白菜价内容区域-->
+<script type='text/template' id="discount-template">
+    {{each result}}
+    <li>
+        <a href="#" class="left">{{#$value.productImg}}</a>
+        <div class="right">
+            <div class="top">
+                <div class="title">{{#$value.productName}}</div>
+                <div class="price">{{#$value.productPrice}}</div>
+            </div>
+            {{#$value.productCouponRemain}}
+            <div class="bottom">
+                <div class="ticket">{{#$value.productCoupon}}</div>
+                <div class="link">{{#$value.productHref}}</div>
+            </div>
+        </div>
+    </li>
+    {{/each}}
+</script>

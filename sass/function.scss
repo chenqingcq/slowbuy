@@ -1,0 +1,3 @@
+@function p2r($size){
+    @return $size/32*1rem;
+}
